@@ -1,0 +1,39 @@
+model:
+  resume: False
+  test: True
+  amp: True
+  base_learning_rate: 1.0e-4
+  params:
+    embed_dim: 4
+    lossconfig:
+      params:
+        disc_start: 100000000
+      lambda_screen: 1
+      lambda_sparsity: 0.1  # lambda_sparsity * ( lambda_alpha_l0 * L0_loss + lambda_alpha_l1 * L1_loss )
+      lambda_alpha_l0: 0.005
+      lambda_alpha_l1: 0.01
+      lambda_structure: 3
+      lambda_bootstrap: 10
+      lambda_clip: 1  # lambda_clip * ( lambda_comp_clip * L_comp + lambda_layer_clip * L_layer )
+      lambda_composition: 1
+      bootstrap_text: ""
+      bootstrap_scheduler: none
+      bootstrap_epoch: -1  # epoch to stop penalizing sparsity
+      use_negative_bootstrap: False  # whether to use negative relevance
+      lambda_bootstrap_min: 0
+      bootstrap_negative_text: []  # negative alpha - will ignore this
+      bootstrap_negative_map_threshold: 0.6  # penalizing only locations with high values in relevancy
+      bootstrapping_min_cover: 1
+      relevancy_num_layers: 10  
+    ddconfig:
+      double_z: False
+      channels: 384
+      resolution: 256
+      timesteps: 16
+      skip: 1
+      in_channels: 3
+      out_ch: 3
+      num_res_blocks: 2
+      attn_resolutions: []
+      splits: 1
+

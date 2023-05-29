@@ -1,0 +1,14 @@
+base:
+  exp: first_stage
+  seed: 42
+  id: test2
+  data: UCF101
+  batch_size: 2
+  ds: 4
+  pretrain_config: 'configs/autoencoder/base.yaml'
+  diffusion_config: 'configs/latent-diffusion/ucf101-ldm-kl-3_res128.yaml'
+  first_stage_folder: 'results/first_stage_try_UCF101_42'
+  first_model: 'results/first_stage_try_UCF101_42'
+  scale_lr: False
+  test: True
+  test_folder: '../../datasets/UCF-101'
